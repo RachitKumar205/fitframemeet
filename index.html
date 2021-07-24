@@ -17,6 +17,14 @@
               roomName: "vpaas-magic-cookie-bd64c9b02dea4bea85f4ca9c35c78a7a/FitframeMeeting",
               parentNode: document.querySelector('#jaas-container')
             });
+            api.addEventListener('participantRoleChanged', function(event) {
+            if (event.role === "moderator") {
+            api.executeCommand('password', pwd);
+            }
+            });
+            api.on('passwordRequired', function () {
+            api.executeCommand('password', pwd);
+            })
           }
         </script>
       </head>
